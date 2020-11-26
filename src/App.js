@@ -1,17 +1,16 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import Header from './components/header';
+import Form from './components/form/form';
 import './App.css';
-import Title from './components/title';
-import Chart from './components/Chart'
+import Title from './components/title/title';
+import Chart from './components/chart/chart'
 
 function App() {
   const [data, setData] = useState([]);
   const [currentPrice, setCurrentPrice] = useState(1);
   const [currentLabel, setCurrentLabel] = useState('CAD');
-  const [calculateLabel, setCalculateLabel] = useState('CAD');
+  const [calculateLabel, setCalculateLabel] = useState('USD');
   const [history, setHistory] = useState([]);
 
-  // fetch data after rendered page
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
@@ -40,8 +39,7 @@ function App() {
         for (let item in koef.rates) {
           data.push({ item, val: koef.rates[item][calculateLabel] })
         }
-        console.log(data.sort((a, b) => a.item > b.item));
-        setHistory(data.sort((a, b) => a.item > b.item))
+        setHistory(data)
       });
 
     return function cleanup() {
@@ -66,7 +64,6 @@ function App() {
   }
   const calculateLabelChange = (e) => {
     setCalculateLabel(e.target.value)
-
   }
   const currentPriceHandler = (e) => {
     setCurrentPrice(e.target.value);
@@ -74,24 +71,23 @@ function App() {
 
   const makeCalculate = () => {
     const result = currentPrice * data[calculateLabel];
-    return result;
+    return result.toFixed(2);
   }
   makeCalculate();
   return (
     <Fragment>
-      <div className='jumbotron'>
+      <div className='container'>
         <Title></Title>
-        <Header
+        <Form
           currentValue={currentPrice}
           calculateValue={makeCalculate}
           rates={data}
           currentLabelChange={currentLabelChange}
           calculateLabelChange={calculateLabelChange}
           currentPriceHandler={currentPriceHandler}
-        ></Header>
-      </div>
-      <div className='container pt-5'>
-        <Chart charts={history} target={calculateLabel}></Chart>
+          calculateLabelValue={calculateLabel}
+        ></Form>
+        <Chart charts={history} currentLabel={currentLabel} calculateLabel={calculateLabel}></Chart>
       </div>
     </Fragment>
   );

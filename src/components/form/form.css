@@ -1,0 +1,39 @@
+form{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 25px;
+}
+.form-block{
+   border: none;
+   display: flex;
+   flex-direction: column;
+   width: 30%;
+   background: #393e46;
+   border-radius: 15px;
+   padding: 15px 20px;
+}
+.form-control{
+    padding: 5px 10px;
+    font-size: 18px;
+    margin: 2px;
+    background: none;
+    font-family: 'Lato';
+    color: #f3eac2;
+    outline-color: none;
+    outline: none;
+    border: none;
+}
+option{
+    background: #393e46 ;
+}
+@media (max-width: 720px) {
+    form{
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-block{
+        width: 100%;
+        margin-top: 25px;
+    }
+}

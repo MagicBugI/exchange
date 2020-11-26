@@ -1,0 +1,20 @@
+.title{
+    display: block;
+    width: 90%;
+    padding-top: 25px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+}
+a{
+    text-decoration: none;
+    outline: none;
+    color: #f3eac2;
+    font-size: 1.5rem;
+}
+a , span{
+    font-family: 'Lato', sans-serif;
+}
+small{
+    font-size: 1.1rem;
+}
+

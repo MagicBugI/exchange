@@ -1,20 +1,23 @@
 import React from 'react';
-const Header = (props) => {
+import './form.css'
+
+const Form = (props) => {
     let preRender = [];
     for (let i in props.rates) {
         preRender.push(<option value={i} key={i}>{i}</option>);
     }
     return (
         <form>
-            <fieldset className='d-flex mb-3 '>
+            
+            <fieldset className='form-block'>
                 <input type='number' className='form-control' value={props.currentValue} onChange={props.currentPriceHandler}></input>
                 <select className='form-control ' onChange={props.currentLabelChange}>
                     {preRender}
                 </select>
             </fieldset>
-            <fieldset className='d-flex'>
+            <fieldset className='form-block'>
                 <input type='number' className='form-control' value={props.calculateValue()} ></input>
-                <select className='form-control' onChange={props.calculateLabelChange}>
+                <select className='form-control' onChange={props.calculateLabelChange} value={props.calculateLabelValue}>
                     {preRender}
                 </select>
             </fieldset>
@@ -22,4 +25,4 @@ const Header = (props) => {
     )
 }
 
-export default Header;
+export default Form;
