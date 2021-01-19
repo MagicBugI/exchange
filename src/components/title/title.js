@@ -5,7 +5,7 @@ const Title = ()=>{
     return(
         <div className='title'>
             <a href='/'>
-                <span>Lawkakala <small>Exchange</small></span>
+                <span>Lawkakala <small>Exchange rate</small></span>
             </a>
         </div>
     )
