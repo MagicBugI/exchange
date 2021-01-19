@@ -55,7 +55,7 @@ function App() {
       const month = ('0' + elem.getUTCMonth()).slice(-2);
       const day = ('0' + elem.getUTCDate()).slice(-2);
       const year = elem.getUTCFullYear().toString();
-      return `${year}-${month}-${day}`;
+      return `${year}-${month !== '00'?month:'01' }-${day}`;
     }
     return [transformDate(time), transformDate(secondTime)];
   }
